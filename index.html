@@ -14,87 +14,169 @@
     <script defer src="script.js"></script>
   </head>
   <body>
-    <main class="app">
-      <section class="greeting">
-        <h2 class="title">
-          What's up, <input type="text" id="name" placeholder="Name here" />
-        </h2>
+    <div class="left-side">
+      <section class="title">
+        <h2 class="title">TODO-LIST</h2>
+        <div class="list" id="todo-list"></div>
       </section>
-
-      <section class="create-todo">
-        <h3>CREATE A TODO</h3>
-        <form id="new-todo-form">
-          <h4>What's on your todo list</h4>
-          <input
-            type="text"
-            name="content"
-            id="content"
-            placeholder="e.g make a video"
-          />
-          <h4>Pick a category</h4>
-          <div class="options">
-            <label>
-              <input
-                type="radio"
-                name="category"
-                id="category1"
-                value="business"
-              />
-              <span class="bubble business"></span>
-              <div>Business</div>
-            </label>
-
-            <label>
-              <input
-                type="radio"
-                name="category"
-                id="category2"
-                value="personal"
-              />
-              <span class="bubble personal"></span>
-              <div>Personal</div>
-            </label>
-          </div>
-
-          <input type="submit" value="Add todo" />
-        </form>
+      <section>
+        <button id="add-todo">
+          <img src="images\add.svg" alt="add" id="add" />
+          <h3>Add new task</h3>
+        </button>
       </section>
-
-      <section class="todo-list">
-        <h3>TODO LIST</h3>
-        <div class="list" id="todo-list">
-          <div class="todo-item">
-            <label>
-              <input type="checkbox" />
-              <span class="bubble business"></span>
-            </label>
-
-            <div class="todo-content">
-              <input type="text" value="Make a video" readonly />
-            </div>
-
-            <div class="actions">
-              <button class="edit">Edit</button>
-              <button class="delete">Delete</button>
-            </div>
-          </div>
-          <div class="todo-item">
-            <label>
-              <input type="checkbox" />
-              <span class="bubble personal"></span>
-            </label>
-
-            <div class="todo-content">
-              <input type="text" value="Get milk" readonly />
-            </div>
-
-            <div class="actions">
-              <button class="edit">Edit</button>
-              <button class="delete">Delete</button>
-            </div>
-          </div>
+      <section class="categories">
+        <h3>Categories</h3>
+        <div class="category" id="personal">
+          <img src="images\personal.svg" alt="personal" />
+          <p>Personal</p>
+        </div>
+        <div class="category" id="work">
+          <img src="images\work.svg" alt="work" />
+          <p>Work / Business</p>
+        </div>
+        <div class="category" id="health">
+          <img src="images\health.svg" alt="health" />
+          <p>Health and Fitness</p>
+        </div>
+        <div class="category" id="learning">
+          <img src="images\learning.svg" alt="learning" />
+          <p>Learning and Growth</p>
+        </div>
+        <div class="category" id="social">
+          <img src="images\social.svg" alt="social" />
+          <p>Social and Relationships</p>
+        </div>
+        <div class="category" id="financial">
+          <img src="images\financial.svg" alt="financial" />
+          <p>Financial</p>
+        </div>
+        <div class="category" id="errands">
+          <img src="images\errands.svg" alt="errands" />
+          <p>Errands and Shopping</p>
         </div>
       </section>
-    </main>
+      <section class="priorities">
+        <h3>Priorities</h3>
+        <div class="priority">
+          <img src="images\urgent.svg" alt="urgent" />
+          <p>Urgent</p>
+        </div>
+        <div class="priority">
+          <img src="images\high.svg" alt="high" />
+          <p>High Priority</p>
+        </div>
+        <div class="priority">
+          <img src="images\moderate.svg" alt="moderate" />
+          <p>Moderate</p>
+        </div>
+        <div class="priority">
+          <img src="images\low.svg" alt="low" />
+          <p>Low Priority</p>
+        </div>
+        <div class="priority">
+          <img src="images\trivial.svg" alt="trivial" />
+          <p>Trivial</p>
+        </div>
+      </section>
+    </div>
+    <div class="right-side">
+      <h2 class="filter-text">ALL</h2>
+      <div class="todo-list">
+        <div class="todo">
+          <div class="left-todo">
+            <input type="checkbox" />
+          </div>
+          <div class="middle-todo">
+            <div class="top-middle">
+              <p><strong>Title: </strong> <i> Make a video</i></p>
+            </div>
+            <div class="bottom-middle">
+              <p><strong>Due date: </strong> <i> 12/03/2024</i></p>
+              <p><strong>Priority: </strong><i> High Priority</i></p>
+            </div>
+          </div>
+          <div class="right-todo">
+            <button
+              onclick="editTask(this)"
+              type="button"
+              class="btn"
+              id="edit-btn"
+            >
+              Edit
+            </button>
+            <button
+              onclick="deleteTask(this)"
+              type="button"
+              class="btn"
+              id="delete-btn"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section id="dialog">
+      <dialog class="dialog-todo">
+        <form id="todo-form" method="dialog">
+          <h3>ADD A TODO</h3>
+          <div class="form-container">
+            <div>
+              <label for="title">Title</label>
+              <input
+                type="text"
+                name="title"
+                id="title-input"
+                placeholder="e.g make a video"
+                required
+              />
+            </div>
+            <div>
+              <label for="priority">Priority</label>
+              <select name="priority" id="priority-input" required>
+                <option value="Urgent">Urgent</option>
+                <option value="High Priority">High Priority</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Low Priority">Low Priority</option>
+                <option value="Trivial">Trivial</option>
+              </select>
+            </div>
+            <div>
+              <label for="category">Category</label>
+              <select name="category" id="category-input" required>
+                <option value="Personal">Personal</option>
+                <option value="Work">Work / Business</option>
+                <option value="Health and Fitness">Health and Fitness</option>
+                <option value="Learning and Growth">Learning and Growth</option>
+                <option value="Social">Social and Relationships</option>
+                <option value="Financial">Financial</option>
+                <option value="Errands">Errads and Shopping</option>
+              </select>
+            </div>
+            <div>
+              <label for="description">Description</label>
+              <input
+                type="textarea"
+                name="description"
+                id="description-input"
+                placeholder="e.g video for YouTube channel"
+                cols="30"
+                rows="5"
+                required
+              />
+            </div>
+            <div>
+              <label for="date">Due date</label>
+              <input type="date" name="date" id="date-input" required />
+            </div>
+            <div class="form-btn">
+              <input type="submit" value="Add todo" id="submit-todo" />
+              <input type="button" value="Cancel" id="cancel-btn" />
+            </div>
+          </div>
+        </form>
+      </dialog>
+    </section>
   </body>
 </html>
