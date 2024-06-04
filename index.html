@@ -25,6 +25,9 @@
           <h3>Add new task</h3>
         </button>
       </section>
+      <section id="show-all">
+        <img src="images\expand-all.svg" alt="Show All" />Show All
+      </section>
       <section class="categories">
         <h3>Categories</h3>
         <div class="category" id="personal">
@@ -58,23 +61,23 @@
       </section>
       <section class="priorities">
         <h3>Priorities</h3>
-        <div class="priority">
+        <div class="priority" id="urgent">
           <img src="images\urgent.svg" alt="urgent" />
           <p>Urgent</p>
         </div>
-        <div class="priority">
+        <div class="priority" id="high">
           <img src="images\high.svg" alt="high" />
           <p>High Priority</p>
         </div>
-        <div class="priority">
+        <div class="priority" id="moderate">
           <img src="images\moderate.svg" alt="moderate" />
           <p>Moderate</p>
         </div>
-        <div class="priority">
+        <div class="priority" id="low">
           <img src="images\low.svg" alt="low" />
           <p>Low Priority</p>
         </div>
-        <div class="priority">
+        <div class="priority" id="trivial">
           <img src="images\trivial.svg" alt="trivial" />
           <p>Trivial</p>
         </div>
@@ -82,40 +85,7 @@
     </div>
     <div class="right-side">
       <h2 class="filter-text">ALL</h2>
-      <div class="todo-list">
-        <div class="todo">
-          <div class="left-todo">
-            <input type="checkbox" />
-          </div>
-          <div class="middle-todo">
-            <div class="top-middle">
-              <p><strong>Title: </strong> <i> Make a video</i></p>
-            </div>
-            <div class="bottom-middle">
-              <p><strong>Due date: </strong> <i> 12/03/2024</i></p>
-              <p><strong>Priority: </strong><i> High Priority</i></p>
-            </div>
-          </div>
-          <div class="right-todo">
-            <button
-              onclick="editTask(this)"
-              type="button"
-              class="btn"
-              id="edit-btn"
-            >
-              Edit
-            </button>
-            <button
-              onclick="deleteTask(this)"
-              type="button"
-              class="btn"
-              id="delete-btn"
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-      </div>
+      <div class="todo-list"></div>
     </div>
     <section id="dialog">
       <dialog class="dialog-todo">
@@ -123,52 +93,48 @@
           <h3>ADD A TODO</h3>
           <div class="form-container">
             <div>
-              <label for="title">Title</label>
+              <label for="title">Title: </label>
               <input
                 type="text"
                 name="title"
                 id="title-input"
                 placeholder="e.g make a video"
-                required
               />
             </div>
             <div>
-              <label for="priority">Priority</label>
-              <select name="priority" id="priority-input" required>
-                <option value="Urgent">Urgent</option>
-                <option value="High Priority">High Priority</option>
-                <option value="Moderate">Moderate</option>
-                <option value="Low Priority">Low Priority</option>
-                <option value="Trivial">Trivial</option>
+              <label for="priority">Priority: </label>
+              <select name="priority" id="priority-input">
+                <option value="urgent">Urgent</option>
+                <option value="high">High Priority</option>
+                <option value="moderate">Moderate</option>
+                <option value="low">Low Priority</option>
+                <option value="trivial">Trivial</option>
               </select>
             </div>
             <div>
-              <label for="category">Category</label>
-              <select name="category" id="category-input" required>
-                <option value="Personal">Personal</option>
-                <option value="Work">Work / Business</option>
-                <option value="Health and Fitness">Health and Fitness</option>
-                <option value="Learning and Growth">Learning and Growth</option>
-                <option value="Social">Social and Relationships</option>
-                <option value="Financial">Financial</option>
-                <option value="Errands">Errads and Shopping</option>
+              <label for="category">Category: </label>
+              <select name="category" id="category-input">
+                <option value="personal">Personal</option>
+                <option value="work">Work / Business</option>
+                <option value="health">Health and Fitness</option>
+                <option value="learning">Learning and Growth</option>
+                <option value="social">Social and Relationships</option>
+                <option value="financial">Financial</option>
+                <option value="errands">Errands and Shopping</option>
               </select>
             </div>
             <div>
-              <label for="description">Description</label>
+              <label for="description">Description: </label>
               <input
                 type="textarea"
                 name="description"
                 id="description-input"
                 placeholder="e.g video for YouTube channel"
-                cols="30"
-                rows="5"
-                required
               />
             </div>
             <div>
-              <label for="date">Due date</label>
-              <input type="date" name="date" id="date-input" required />
+              <label for="date">Due date: </label>
+              <input type="date" name="date" id="date-input" />
             </div>
             <div class="form-btn">
               <input type="submit" value="Add todo" id="submit-todo" />

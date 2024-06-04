@@ -16,6 +16,7 @@ img {
 
 body {
   display: flex;
+  min-height: 100vh;
 }
 
 section {
@@ -27,6 +28,8 @@ section {
 
 .left-side {
   background-color: #ffe5d9;
+  border-right: 2px solid black;
+  box-shadow: 10px 1px 10px gray;
 }
 
 #add-todo {
@@ -38,6 +41,19 @@ section {
   border: none;
   outline: none;
   background: none;
+  cursor: pointer;
+}
+
+#show-all {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+}
+
+#show-all:hover {
+  background-color: #ffd7ba;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -119,6 +135,10 @@ section {
   gap: 3px;
 }
 
+#no-match {
+  margin: 20px;
+}
+
 .btn {
   border: none;
   border-radius: 5px;
@@ -145,7 +165,8 @@ form {
   transform: translate(-50%, -50%);
   background-color: whitesmoke;
   padding: 40px;
-  border: 1px solid #ccc;
+  border: 3px solid black;
+  border-radius: 10px;
 }
 
 form h3 {
@@ -160,4 +181,20 @@ form h3 {
 
 .form-container div {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-container input,
+.form-container select {
+  width: 70%;
+  border-radius: 5px;
+  height: 30px;
+  padding: 5px;
+}
+
+#submit-todo:hover,
+#cancel-btn:hover {
+  cursor: pointer;
 }
